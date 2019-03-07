@@ -1,0 +1,50 @@
+<html>
+    <head>
+ 
+    </head>
+<body>
+ <script language="javascript" type="text/javascript">
+  const Form1= require("../schema/Form");
+    function calltl(Tl_id)
+    { 
+     var Tl_id= {
+           value: Tl_id
+         }
+         var xhr = new window.XMLHttpRequest()
+     
+         xhr.open('post', '/findstaff', true)
+         xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+         xhr.send(JSON.stringify(Tl_id))
+         
+         xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       document.getElementById("demo").innerHTML = xhr.responseText;
+    }
+};
+       }
+
+ </script>
+
+
+
+
+  <div class="ab" id="ab">Tl
+        <select id="Manager" name="Manager" onchange="javascript: calltl(this.options[this.selectedIndex].value)">
+        <option value="">Select Tl</option>
+
+{{#each data}}
+ <option value="{{this.agent_id}}">{{this.agent_name}}</option> 
+      
+  {{/each}}
+       
+
+ </select>
+    </div>
+<p id="demo">yukukukyuky</p>
+</body>
+</html>
+
+
+
+
